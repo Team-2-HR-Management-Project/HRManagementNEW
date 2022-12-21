@@ -22,7 +22,12 @@ public class EmailController {
     // Sending a simple Email
     @PostMapping("/sendMail")
     public void sendMail( @RequestBody RegisterByMailResponseDto dto){
-        emailSenderService.sendEmail(dto.getEmail(),"Your temporary password: ",dto.getTemppassword());
+        try{
+            emailSenderService.sendEmail(dto.getEmail(),"Your temporary password: ",dto.getTemppassword());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
 

@@ -129,7 +129,11 @@ public class AuthService extends ServiceManager<Auth, Long> {
                     .temppassword(auth.getTemppassword())
                     .build();
 
-            emailManager.sendMail(registerByMailResponseDto);
+
+                emailManager.sendMail(registerByMailResponseDto);
+
+
+
             return registerByMailResponseDto;
 
         } catch (Exception e) {
