@@ -1,0 +1,20 @@
+server:
+  port: 8091
+
+spring:
+
+  datasource:
+    username: 'postgres'
+    password: 'root'
+    url: 'jdbc:postgresql://localhost:5432/HRManagementUser'
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+myapplication:
+  feign:
+    auth: http://localhost:8090/api/v1

@@ -1,0 +1,27 @@
+server:
+  port: 8090
+
+spring:
+#  zipkin:
+#    base-url: http://localhost:9411
+#    enabled: true
+#    service:
+#      name: mail-service
+
+  datasource:
+    username: 'postgres'
+    password: 'root'
+    url: 'jdbc:postgresql://35.202.178.134:5533/HRManagementAuth'
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+
+myapplication:
+  feign:
+    user: http://10.8.11.151:8091/api/v1
+    email: http://localhost:8099/api/v1
+    #email service taşınınca düzeltilmeli

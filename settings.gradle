@@ -1,0 +1,8 @@
+rootProject.name = 'HRManagement'
+include 'user-service'
+include 'auth-service'
+include 'config-server'
+include 'api-gateway-service'
+include 'email-service'
+include 'company-service'
+

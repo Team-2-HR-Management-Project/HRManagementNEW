@@ -1,0 +1,80 @@
+package com.team2.controller;
+
+import com.team2.dto.request.ActivateUserRequestDto;
+import com.team2.dto.request.CreateRequestDto;
+import com.team2.dto.request.FindByToken;
+import com.team2.dto.request.UpdateRequestDto;
+import com.team2.dto.response.DetailResponseDto;
+import com.team2.dto.response.SummaryResponseDto;
+import com.team2.repository.entity.User;
+import com.team2.service.UserService;
+import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.team2.constants.ApiUrls.*;
+
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping(USER)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class UserController {
+
+    private final UserService userService;
+
+     @PostMapping(CREATE)
+    public ResponseEntity<Boolean> createUser(@RequestBody @Valid CreateRequestDto dto){
+        return ResponseEntity.ok(userService.createUser(dto));
+    }
+
+    @PutMapping(UPDATE)
+    public ResponseEntity<DetailResponseDto> updateUser(@RequestBody UpdateRequestDto dto){
+        return ResponseEntity.ok(userService.updateUser(dto));
+    }
+
+    @GetMapping(FINDALL)
+    public ResponseEntity<List<SummaryResponseDto>> findAllSummary(){
+        return ResponseEntity.ok(userService.findAllSummary());
+    }
+
+    @GetMapping(FINDALL_MANAGER)
+    public ResponseEntity<List<SummaryResponseDto>> findAllManager(){
+        return ResponseEntity.ok(userService.findAllManager());
+    }
+
+    @GetMapping(FINDALL_EMPLOYEE)
+    public ResponseEntity<List<SummaryResponseDto>> findAllEmployee(){
+        return ResponseEntity.ok(userService.findAllEmployee());
+    }
+    @GetMapping(SEE_DETAIL)
+    public ResponseEntity<DetailResponseDto> seeDetail(@PathVariable Long authid){
+         return ResponseEntity.ok(userService.seeDetail(authid));
+    }
+
+    @DeleteMapping(DELETEBYID)
+    public ResponseEntity<Boolean> deleteUser(@PathVariable Long authid) {
+        return ResponseEntity.ok(userService.deleteUser(authid));
+    }
+
+    @PutMapping(ACTIVATE)
+    public  ResponseEntity<Boolean> activateUser(@RequestBody ActivateUserRequestDto dto){
+         return ResponseEntity.ok(userService.activateUser(dto));
+    }
+
+    @GetMapping(FINDBYID)
+    public ResponseEntity<User> getById(@RequestBody @PathVariable Long id) {
+        return ResponseEntity.ok(userService.getById(id));
+    }
+
+    @PostMapping("/findbytoken")
+    public ResponseEntity<DetailResponseDto> findbyToken(@RequestBody FindByToken token) {
+
+        return ResponseEntity.ok(userService.findByToken(token.getToken()));
+
+    }
+}

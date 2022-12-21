@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: "configserver:"
+  application:
+    name: user-service-application-dev
+
+#spring:
+#  cloud:
+#    config:
+#      uri: http://10.8.14.246:8888
+#  config:
+#    import: "configserver:"
+#  application:
+#    name: user-service-application
