@@ -25,7 +25,7 @@ public class CreatePasswordRequestDto implements Serializable {
     private String temppassword;
     @NotBlank
     private String password;
-    private Long id;
+
 
 
 

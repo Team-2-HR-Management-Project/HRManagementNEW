@@ -4,6 +4,7 @@ import com.team2.dto.request.CreatePasswordRequestDto;
 import com.team2.dto.request.LoginRequestDto;
 import com.team2.dto.request.RegisterByMailRequestDto;
 import com.team2.dto.request.RegisterRequestDto;
+import com.team2.dto.response.CreatePasswordResponseDto;
 import com.team2.dto.response.LoginResponseDto;
 import com.team2.dto.response.RegisterByMailResponseDto;
 import com.team2.dto.response.RegisterResponseDto;
@@ -51,8 +52,8 @@ public class AuthController {
         return ResponseEntity.ok(authService.deleteAuth(token));
     }
 
-    @PutMapping(ACTIVATEAUTH)
-    public ResponseEntity<Boolean> activateUser(@RequestBody CreatePasswordRequestDto dto){
+    @PostMapping("/createpassword")
+    public ResponseEntity<CreatePasswordResponseDto> activateUser(@RequestBody CreatePasswordRequestDto dto){
         return ResponseEntity.ok(authService.createPassword(dto));
     }
 

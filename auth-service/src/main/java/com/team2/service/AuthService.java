@@ -1,6 +1,7 @@
 package com.team2.service;
 
 import com.team2.dto.request.*;
+import com.team2.dto.response.CreatePasswordResponseDto;
 import com.team2.dto.response.LoginResponseDto;
 import com.team2.dto.response.RegisterByMailResponseDto;
 import com.team2.dto.response.RegisterResponseDto;
@@ -142,15 +143,20 @@ public class AuthService extends ServiceManager<Auth, Long> {
         }
     }
 
-    public boolean createPassword(CreatePasswordRequestDto dto){
-        Optional<Auth> auth= authRepository.findOptionalByIdAndTemppassword(dto.getId(),dto.getTemppassword());
+    public CreatePasswordResponseDto createPassword(CreatePasswordRequestDto dto){
+        Optional<Auth> auth= authRepository.findOptionalByEmailAndTemppassword(dto.getEmail(),dto.getTemppassword());
         if(auth.isPresent()){
 
             auth.get().setStatus(EStatus.ACTIVE);
             auth.get().setPassword(dto.getPassword());
-            auth.get().setTemppassword("");
+            auth.get().setTemppassword("consumed");
             save(auth.get());
-            return true;
+
+            return CreatePasswordResponseDto.builder()
+                    .email(auth.get().getEmail())
+                    .id(auth.get().getId())
+                    .build();
+
         }else{
             throw new AuthManagerException(ErrorType.AUTH_NOT_FOUND);
         }
