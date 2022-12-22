@@ -24,4 +24,5 @@ public class CreateRequestDto {
     private String surname;
     private Long identityNumber;
     private ERole role;
+    private Long companyid;
 }

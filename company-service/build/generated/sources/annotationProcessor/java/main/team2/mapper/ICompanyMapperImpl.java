@@ -11,7 +11,7 @@ import team2.repository.entity.Company;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-20T15:01:21+0300",
+    date = "2022-12-22T10:12:17+0300",
     comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component

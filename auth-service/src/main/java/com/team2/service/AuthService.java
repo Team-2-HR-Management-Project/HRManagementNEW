@@ -122,6 +122,7 @@ public class AuthService extends ServiceManager<Auth, Long> {
                     .name(dto.getName())
                     .surname(dto.getSurname())
                     .role(dto.getRole())
+                    .companyid(dto.getCompanyid())
                     .build());
 
             RegisterByMailResponseDto registerByMailResponseDto=RegisterByMailResponseDto.builder()

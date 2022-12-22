@@ -29,6 +29,8 @@ public class RegisterByMailRequestDto implements Serializable {
     @NotBlank
     private String surname;
     private ERole role;
+    private Long companyid;
+
 
 
 }
