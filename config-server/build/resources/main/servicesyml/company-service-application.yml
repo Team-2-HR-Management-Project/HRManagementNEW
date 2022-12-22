@@ -6,7 +6,7 @@ spring:
   datasource:
     username: 'postgres'
     password: 'root'
-    url: 'jdbc:postgresql://localhost:5432/HRManagementCompany'
+    url: 'jdbc:postgresql://35.224.205.5:5432/HRManagementCompany'
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -14,7 +14,3 @@ spring:
       ddl-auto: update
     show-sql: true
 
-
-myapplication:
-  feign:
-    email: http://localhost:8099/api/v1

@@ -6,15 +6,15 @@ spring:
   datasource:
     username: 'postgres'
     password: 'root'
-    url: 'jdbc:postgresql://35.202.178.134:5533/HRManagementUser'
+    url: 'jdbc:postgresql://35.224.205.5:5432/HRManagementUser'
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
 
 
 myapplication:
   feign:
-    auth: http://10.8.8.226:8090/api/v1
+    auth: http://10.80.2.247:8090/api/v1

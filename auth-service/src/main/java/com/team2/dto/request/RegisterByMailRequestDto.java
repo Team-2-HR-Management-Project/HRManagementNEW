@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -19,10 +20,8 @@ import java.io.Serializable;
 @Builder
 public class RegisterByMailRequestDto implements Serializable {
 
-
-
-    @Email(message = "Invalid Email ")
-    @NotBlank
+    @NotBlank(message = "Email is mandatory")
+    @Column(unique=true)
     private String email;
     @NotBlank
     private String name;
@@ -30,7 +29,4 @@ public class RegisterByMailRequestDto implements Serializable {
     private String surname;
     private ERole role;
     private Long companyid;
-
-
-
 }
