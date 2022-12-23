@@ -6,7 +6,7 @@ spring:
   datasource:
     username: 'postgres'
     password: 'root'
-    url: 'jdbc:postgresql://35.224.205.5:5432/HRManagementCompany'
+    url: 'jdbc:postgresql://35.192.156.242:5432/HRManagementCompany'
     driver-class-name: org.postgresql.Driver
 
   jpa:

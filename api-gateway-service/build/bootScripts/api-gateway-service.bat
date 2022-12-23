@@ -13,7 +13,7 @@ if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%..
 
-@rem Add default JVM options here. You can also use JAVA_OPTS and APİ_GATEWAY_SERVİCE_OPTS to pass JVM options to this script.
+@rem Add default JVM options here. You can also use JAVA_OPTS and API_GATEWAY_SERVICE_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS=
 
 @rem Find java.exe
@@ -66,16 +66,16 @@ set CMD_LINE_ARGS=%*
 set JARPATH=%APP_HOME%\lib\api-gateway-service-v.0.1.jar
 
 @rem Execute api-gateway-service
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %APİ_GATEWAY_SERVİCE_OPTS%  -jar "%JARPATH%" %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %API_GATEWAY_SERVICE_OPTS%  -jar "%JARPATH%" %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
-rem Set variable APİ_GATEWAY_SERVİCE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem Set variable API_GATEWAY_SERVICE_EXIT_CONSOLE if you need the _script_ return code instead of
 rem the _cmd.exe /c_ return code!
-if  not "" == "%APİ_GATEWAY_SERVİCE_EXIT_CONSOLE%" exit 1
+if  not "" == "%API_GATEWAY_SERVICE_EXIT_CONSOLE%" exit 1
 exit /b 1
 
 :mainEnd

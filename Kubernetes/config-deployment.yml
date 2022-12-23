@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-deployment
+  labels:
+    team: team2
+spec:
+  selector:
+    matchLabels:
+      app: config-service
+  template:
+    metadata:
+      labels:
+        app: config-service
+    spec:
+      containers:
+        - name: config-server-container
+          image: mdsaad/config:v001
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "0.1"
+            limits:
+              memory: "512Mi"
+              cpu: "0.2"
+          ports:
+            - containerPort: 8888

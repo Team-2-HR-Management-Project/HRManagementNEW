@@ -32,7 +32,7 @@ set APP_HOME=%DIRNAME%..
 @rem Resolve any "." and ".." in APP_HOME to make it shorter.
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 
-@rem Add default JVM options here. You can also use JAVA_OPTS and CONFİG_SERVER_OPTS to pass JVM options to this script.
+@rem Add default JVM options here. You can also use JAVA_OPTS and CONFIG_SERVER_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS=
 
 @rem Find java.exe
@@ -71,16 +71,16 @@ set CLASSPATH=%APP_HOME%\lib\config-server-v.0.1-plain.jar;%APP_HOME%\lib\spring
 
 
 @rem Execute config-server
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %CONFİG_SERVER_OPTS%  -classpath "%CLASSPATH%"  %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %CONFIG_SERVER_OPTS%  -classpath "%CLASSPATH%"  %*
 
 :end
 @rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
-rem Set variable CONFİG_SERVER_EXIT_CONSOLE if you need the _script_ return code instead of
+rem Set variable CONFIG_SERVER_EXIT_CONSOLE if you need the _script_ return code instead of
 rem the _cmd.exe /c_ return code!
-if  not "" == "%CONFİG_SERVER_EXIT_CONSOLE%" exit 1
+if  not "" == "%CONFIG_SERVER_EXIT_CONSOLE%" exit 1
 exit /b 1
 
 :mainEnd
