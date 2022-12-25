@@ -4,13 +4,13 @@ server:
 spring:
 
   datasource:
-    username: 'postgres'
-    password: 'root'
-    url: 'jdbc:postgresql://35.192.156.242:5432/HRManagementCompany'
     driver-class-name: org.postgresql.Driver
-
+    username: postgres
+    password: root
+    url: jdbc:postgresql://34.173.207.70:5533/HRMCompany
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
 
