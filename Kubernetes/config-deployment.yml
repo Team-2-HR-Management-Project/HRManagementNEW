@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: config-server-container
-          image: mdsaad/config:v001
+          image: team2hr/config:v001
           resources:
             requests:
               memory: "128Mi"

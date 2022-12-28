@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-gateway-container
-          image: mdsaad/apigateway:v001
+          image: team2hr/apigateway:v001
           resources:
             requests:
               memory: "1Gi"

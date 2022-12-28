@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: email
-          image: mdsaad/email:v001
+          image: team2hr/email:v002
           resources:
             requests:
               memory: 1024Mi
