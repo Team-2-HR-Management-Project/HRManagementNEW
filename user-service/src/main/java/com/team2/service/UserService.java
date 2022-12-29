@@ -2,6 +2,7 @@ package com.team2.service;
 
 import com.team2.dto.request.ActivateUserRequestDto;
 import com.team2.dto.request.CreateRequestDto;
+import com.team2.dto.request.UpdateAllRequestDto;
 import com.team2.dto.request.UpdateRequestDto;
 import com.team2.dto.response.DetailResponseDto;
 import com.team2.dto.response.SummaryResponseDto;
@@ -80,7 +81,25 @@ public class UserService extends ServiceManager<User, Long> {
 
         Optional<User> user=userRepository.findOptionalByAuthid(authid);
         if (user.isPresent()){
-            return IUserMapper.INSTANCE.toDetailResponseDto(user.get());
+            return DetailResponseDto.builder()
+                    .id(user.get().getId())
+                    .authid(user.get().getAuthid())
+                    .name(user.get().getName())
+                    .middleName(user.get().getMiddleName())
+                    .surname(user.get().getSurname())
+                    .secondSurname(user.get().getSecondSurname())
+                    .email(user.get().getEmail())
+                    .phone(user.get().getPhone())
+                    .address(user.get().getAddress())
+                    .photo(user.get().getPhoto())
+                    .dob(user.get().getDob())
+                    .placeOfBirth(user.get().getPlaceOfBirth())
+                    .joinDate(user.get().getJoinDate())
+                    .department(user.get().getDepartment())
+                    .profession(user.get().getProfession())
+                    .role(user.get().getRole().toString())
+                    .identityNumber(user.get().getIdentityNumber())
+                    .build();
         }else {
             throw new UserManagerException(ErrorType.USER_NOT_FOUND);
         }
@@ -137,7 +156,26 @@ public class UserService extends ServiceManager<User, Long> {
         if (authid.isPresent()) {
             Optional<User> user = userRepository.findOptionalByAuthid(authid.get());
             if (user.isPresent()) {
-                return IUserMapper.INSTANCE.toDetailResponseDto(user.get());
+
+                return DetailResponseDto.builder()
+                        .id(user.get().getId())
+                        .authid(user.get().getAuthid())
+                        .name(user.get().getName())
+                        .middleName(user.get().getMiddleName())
+                        .surname(user.get().getSurname())
+                        .secondSurname(user.get().getSecondSurname())
+                        .email(user.get().getEmail())
+                        .phone(user.get().getPhone())
+                        .address(user.get().getAddress())
+                        .photo(user.get().getPhoto())
+                        .dob(user.get().getDob())
+                        .placeOfBirth(user.get().getPlaceOfBirth())
+                        .joinDate(user.get().getJoinDate())
+                        .department(user.get().getDepartment())
+                        .profession(user.get().getProfession())
+                        .role(user.get().getRole().toString())
+                        .identityNumber(user.get().getIdentityNumber())
+                        .build();
             } else {
                 throw new UserManagerException(ErrorType.USER_NOT_FOUND);
             }
@@ -148,5 +186,49 @@ public class UserService extends ServiceManager<User, Long> {
 
 
 
+    }
+
+    public DetailResponseDto updateAllUser(UpdateAllRequestDto dto) {
+        Optional<User> user=userRepository.findOptionalByAuthid(dto.getAuthid());
+        if(user.isPresent()){
+            try{
+                user.get().setPhone(dto.getPhone());
+                user.get().setAddress(dto.getAddress());
+                user.get().setName(dto.getName());
+                user.get().setSurname(dto.getSurname());
+                user.get().setPhoto(dto.getPhoto());
+                user.get().setMiddleName(dto.getMiddleName());
+                user.get().setSecondSurname(dto.getSecondSurname());
+                user.get().setDob(dto.getDob());
+                user.get().setPlaceOfBirth(dto.getPlaceOfBirth());
+                user.get().setJoinDate(dto.getJoinDate());
+                user.get().setProfession(dto.getProfession());
+                user.get().setIdentityNumber(dto.getIdentityNumber());
+                save(user.get());
+                 return DetailResponseDto.builder()
+                        .id(user.get().getId())
+                        .authid(user.get().getAuthid())
+                        .name(user.get().getName())
+                        .middleName(user.get().getMiddleName())
+                        .surname(user.get().getSurname())
+                        .secondSurname(user.get().getSecondSurname())
+                        .email(user.get().getEmail())
+                        .phone(user.get().getPhone())
+                        .address(user.get().getAddress())
+                        .photo(user.get().getPhoto())
+                        .dob(user.get().getDob())
+                        .placeOfBirth(user.get().getPlaceOfBirth())
+                        .joinDate(user.get().getJoinDate())
+                        .department(user.get().getDepartment())
+                        .profession(user.get().getProfession())
+                        .role(user.get().getRole().toString())
+                        .identityNumber(user.get().getIdentityNumber())
+                        .build();
+            }catch (Exception e){
+                throw new UserManagerException(ErrorType.USER_NOT_UPDATED);
+            }
+        }else{
+            throw new UserManagerException(ErrorType.USER_NOT_FOUND);
+        }
     }
 }

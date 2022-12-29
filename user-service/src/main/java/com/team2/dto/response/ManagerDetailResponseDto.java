@@ -36,5 +36,6 @@ public class ManagerDetailResponseDto {
     private Long joinDate;
     private Long resignDate;
     private String status;
+    private String role;
 
 }

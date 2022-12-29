@@ -1,6 +1,7 @@
 package com.team2.dto.response;
 
 import com.team2.repository.enums.EDepartment;
+import com.team2.repository.enums.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,5 @@ public class DetailResponseDto {
     private String placeOfBirth;
     private Long identityNumber;
     private Long joinDate;
+    private String role;
 }

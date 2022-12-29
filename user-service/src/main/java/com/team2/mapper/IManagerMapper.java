@@ -7,7 +7,6 @@ import com.team2.dto.response.ManagerDetailResponseDto;
 import com.team2.dto.response.ManagerSummaryResponseDto;
 
 
-import com.team2.repository.entity.Manager;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;

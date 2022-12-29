@@ -1,6 +1,7 @@
 package com.team2.dto.response;
 
 import com.team2.repository.enums.EDepartment;
+import com.team2.repository.enums.ERole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,4 +22,5 @@ public class SummaryResponseDto {
     private EDepartment department;
     private String profession;
     private String photo;
+    private String role;
 }

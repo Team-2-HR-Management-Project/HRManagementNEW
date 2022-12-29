@@ -1,9 +1,6 @@
 package com.team2.controller;
 
-import com.team2.dto.request.ActivateUserRequestDto;
-import com.team2.dto.request.CreateRequestDto;
-import com.team2.dto.request.FindByToken;
-import com.team2.dto.request.UpdateRequestDto;
+import com.team2.dto.request.*;
 import com.team2.dto.response.DetailResponseDto;
 import com.team2.dto.response.SummaryResponseDto;
 import com.team2.repository.entity.User;
@@ -35,6 +32,10 @@ public class UserController {
     @PutMapping(UPDATE)
     public ResponseEntity<DetailResponseDto> updateUser(@RequestBody UpdateRequestDto dto){
         return ResponseEntity.ok(userService.updateUser(dto));
+    }
+    @PutMapping(UPDATEALL)
+    public ResponseEntity<DetailResponseDto> updateAllUser(@RequestBody UpdateAllRequestDto dto){
+        return ResponseEntity.ok(userService.updateAllUser(dto));
     }
 
     @GetMapping(FINDALL)
