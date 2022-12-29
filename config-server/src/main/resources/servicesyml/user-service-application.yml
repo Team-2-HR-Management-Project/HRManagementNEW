@@ -4,17 +4,18 @@ server:
 spring:
 
   datasource:
-    username: 'postgres'
-    password: 'root'
-    url: 'jdbc:postgresql://35.202.178.134:5533/HRManagementUser'
     driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+    url: jdbc:postgresql://34.173.207.70:5533/HRMUser
+
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
 
 
 myapplication:
   feign:
-    auth: http://10.8.8.226:8090/api/v1
+    auth: http://10.80.4.19:8090/api/v1

@@ -8,6 +8,6 @@ import team2.repository.entity.Company;
 import java.util.Optional;
 
 @Repository
-public interface ICompanyRepository extends JpaRepository<Company,Long> {
+public interface ICompanyRepository extends JpaRepository<Company, Long> {
     Optional<Company> findOptionalById(Long id);
 }
