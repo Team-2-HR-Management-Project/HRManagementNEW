@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: mdsaad/auth:v001
+        image: team2hr/auth:v001
         resources:
           requests:
             memory: 1024Mi
