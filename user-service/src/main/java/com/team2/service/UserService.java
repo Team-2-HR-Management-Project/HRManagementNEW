@@ -156,7 +156,6 @@ public class UserService extends ServiceManager<User, Long> {
         if (authid.isPresent()) {
             Optional<User> user = userRepository.findOptionalByAuthid(authid.get());
             if (user.isPresent()) {
-
                 return DetailResponseDto.builder()
                         .id(user.get().getId())
                         .authid(user.get().getAuthid())

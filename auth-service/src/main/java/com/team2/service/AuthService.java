@@ -1,10 +1,7 @@
 package com.team2.service;
 
 import com.team2.dto.request.*;
-import com.team2.dto.response.CreatePasswordResponseDto;
-import com.team2.dto.response.LoginResponseDto;
-import com.team2.dto.response.RegisterByMailResponseDto;
-import com.team2.dto.response.RegisterResponseDto;
+import com.team2.dto.response.*;
 import com.team2.exception.AuthManagerException;
 import com.team2.exception.ErrorType;
 import com.team2.manager.IEmailManager;
@@ -165,4 +162,22 @@ public class AuthService extends ServiceManager<Auth, Long> {
     }
 
 
+    public ForgetPasswordMailResponseDto forgetPasswordMail(ForgetPasswordMailRequestDto dto) {
+        Auth auth =Auth.builder().email(dto.getEmail()).build();
+        auth.setTemppassword(PasswordGenerator.generateCode(UUID.randomUUID().toString()));
+        auth.setPassword("");
+        try {
+        save(auth);
+        ForgetPasswordMailResponseDto forgetPasswordMailResponseDto=ForgetPasswordMailResponseDto.builder()
+                .email(auth.getEmail())
+                .id(auth.getId())
+                .temppassword(auth.getTemppassword())
+                .build();
+        emailManager.forgetPasswordMail(forgetPasswordMailResponseDto);
+        return forgetPasswordMailResponseDto;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AuthManagerException(ErrorType.AUTH_NOT_CREATED);
+        }
+    }
 }

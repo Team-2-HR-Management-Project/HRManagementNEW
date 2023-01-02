@@ -1,6 +1,7 @@
 package com.team2.manager;
 
 
+import com.team2.dto.response.ForgetPasswordMailResponseDto;
 import com.team2.dto.response.RegisterByMailResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -12,4 +13,6 @@ public interface IEmailManager {
 
     @PostMapping("/sendMail")
     public void sendMail( @RequestBody RegisterByMailResponseDto dto);
+    @PostMapping("/forgetPasswordMail")
+    public void forgetPasswordMail(@RequestBody ForgetPasswordMailResponseDto dto);
 }
