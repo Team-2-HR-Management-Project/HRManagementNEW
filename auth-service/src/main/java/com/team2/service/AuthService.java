@@ -162,22 +162,19 @@ public class AuthService extends ServiceManager<Auth, Long> {
     }
 
 
-    public ForgetPasswordMailResponseDto forgetPasswordMail(ForgetPasswordMailRequestDto dto) {
-        Auth auth =Auth.builder().email(dto.getEmail()).build();
-        auth.setTemppassword(PasswordGenerator.generateCode(UUID.randomUUID().toString()));
-        auth.setPassword("");
-        try {
-        save(auth);
-        ForgetPasswordMailResponseDto forgetPasswordMailResponseDto=ForgetPasswordMailResponseDto.builder()
-                .email(auth.getEmail())
-                .id(auth.getId())
-                .temppassword(auth.getTemppassword())
-                .build();
-        emailManager.forgetPasswordMail(forgetPasswordMailResponseDto);
-        return forgetPasswordMailResponseDto;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new AuthManagerException(ErrorType.AUTH_NOT_CREATED);
+    public boolean forgetPasswordMail(ForgetPasswordMailRequestDto dto) {
+        Optional<Auth> auth = authRepository.findOptionalByEmail(dto.getEmail());
+        if (auth.isPresent()) {
+            auth.get().setTemppassword(PasswordGenerator.generateCode(UUID.randomUUID().toString()));
+            save(auth.get());
+            ForgetPasswordMailResponseDto forgetPasswordMailResponseDto= ForgetPasswordMailResponseDto.builder()
+                    .email(auth.get().getEmail())
+                    .temppassword(auth.get().getTemppassword())
+                    .build();
+            emailManager.forgetPasswordMail(forgetPasswordMailResponseDto);
+            return true;
+        } else {
+            throw new AuthManagerException(ErrorType.AUTH_NOT_FOUND);
         }
     }
 }

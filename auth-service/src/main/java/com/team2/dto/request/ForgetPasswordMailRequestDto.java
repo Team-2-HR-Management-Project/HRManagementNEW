@@ -20,10 +20,4 @@ public class ForgetPasswordMailRequestDto implements Serializable {
     @NotBlank(message = "Email is mandatory")
     @Column(unique=true)
     private String email;
-    @NotBlank
-    private String name;
-    @NotBlank
-    private String surname;
-    private ERole role;
-    private Long companyid;
 }
