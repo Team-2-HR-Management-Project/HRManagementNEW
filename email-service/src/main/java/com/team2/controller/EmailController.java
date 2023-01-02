@@ -1,6 +1,7 @@
 
 package com.team2.controller;
 
+import com.team2.dto.response.ForgetPasswordMailResponseDto;
 import com.team2.dto.response.RegisterByMailResponseDto;
 import com.team2.service.EmailSenderService;
 
@@ -29,6 +30,16 @@ public class EmailController {
             e.printStackTrace();
         }
     }
+
+    @PostMapping("/forgetPasswordMail")
+    public void forgetPasswordMail(@RequestBody ForgetPasswordMailResponseDto dto) {
+        try {
+            emailSenderService.sendEmail(dto.getEmail(), "Your temporary password: ", dto.getTemppassword());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 

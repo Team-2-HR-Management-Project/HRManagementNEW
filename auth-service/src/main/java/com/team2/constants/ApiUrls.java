@@ -8,7 +8,7 @@ public class ApiUrls {
     public static final String LOGIN="/login";
     public static final String REGISTER="/register";
     public static final String REGISTERBYMAIL="/registerbymail";
-
+    public static final String FORGETPASSWORDMAIL="/forgetpasswordmail";
     public static final String DELETE="/delete/{token}";
     public static final String FINDALL="/findall";
     public static final String CREATE="/create";

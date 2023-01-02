@@ -1,13 +1,7 @@
 package com.team2.controller;
 
-import com.team2.dto.request.CreatePasswordRequestDto;
-import com.team2.dto.request.LoginRequestDto;
-import com.team2.dto.request.RegisterByMailRequestDto;
-import com.team2.dto.request.RegisterRequestDto;
-import com.team2.dto.response.CreatePasswordResponseDto;
-import com.team2.dto.response.LoginResponseDto;
-import com.team2.dto.response.RegisterByMailResponseDto;
-import com.team2.dto.response.RegisterResponseDto;
+import com.team2.dto.request.*;
+import com.team2.dto.response.*;
 import com.team2.service.AuthService;
 import com.team2.utility.JwtTokenManager;
 import io.swagger.v3.oas.annotations.Operation;
@@ -56,7 +50,11 @@ public class AuthController {
     public ResponseEntity<CreatePasswordResponseDto> activateUser(@RequestBody CreatePasswordRequestDto dto){
         return ResponseEntity.ok(authService.createPassword(dto));
     }
-
+    @PostMapping(FORGETPASSWORDMAIL)
+    @Operation(summary = "The Method for saving a user by sending mail")
+    public ResponseEntity<ForgetPasswordMailResponseDto> registerByMail(@RequestBody @Valid ForgetPasswordMailRequestDto dto) {
+        return ResponseEntity.ok(authService.forgetPasswordMail(dto));
+    }
 
 
 }
