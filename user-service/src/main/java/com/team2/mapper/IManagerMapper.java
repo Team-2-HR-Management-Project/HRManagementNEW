@@ -16,10 +16,6 @@ public interface IManagerMapper {
 
     IManagerMapper INSTANCE = Mappers.getMapper(IManagerMapper.class);
 
-   Manager toManager(final ManagerCreateRequestDto dto);
-   ManagerCreateRequestDto toManagerCreateRequestDto (final CreateRequestDto createRequestDto);
-   CreateRequestDto toCreateRequestDto (final ManagerCreateRequestDto managerCreateRequestDto);
-    ManagerSummaryResponseDto toManagerSummaryResponseDto(final Manager manager);
-    ManagerDetailResponseDto toManagerDetailResponseDto(final Manager manager);
+
 
 }

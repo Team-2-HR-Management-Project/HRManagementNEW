@@ -1,0 +1,39 @@
+server:
+  port: 8094
+
+spring:
+  datasource:
+    username: 'postgres'
+    password: 'root'
+    url: 'jdbc:postgresql://localhost:5432/HRManagementLeave'
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+
+
+#server:
+#  port: 8094
+#
+#spring:
+#
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    username: postgres
+#    password: root
+#    url: jdbc:postgresql://34.173.207.70:5533/HRMLeave
+#
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#
+#
+#myapplication:
+#  feign:
+#    auth: http://10.80.4.19:8090/api/v1
