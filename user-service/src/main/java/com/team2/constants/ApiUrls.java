@@ -11,6 +11,7 @@ public class ApiUrls {
     public static final String FINDALL="/findall";
     public static final String FINDALL_MANAGER="/findallmanager";
     public static final String FINDALL_EMPLOYEE="/findallemployee";
+    public static final String FINDALL_MY_EMPLOYEE="/findallmyemployee";
     public static final String SEE_DETAIL="/seedetail/{authid}";
     public static final String DELETEBYID="/delete/{authid}";
     public static final String ACTIVATE="/activate";
