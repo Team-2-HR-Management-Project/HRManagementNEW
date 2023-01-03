@@ -16,4 +16,6 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     Optional<User> findOptionalByAuthid(Long authid);
 
     Optional<List<User>> findAllOptionalByRole(ERole role);
+
+    Optional<List<User>> findAllOptionalByRoleAndCompanyid(ERole employee, Long companyid);
 }

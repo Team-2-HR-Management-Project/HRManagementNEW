@@ -72,9 +72,9 @@ public class UserService extends ServiceManager<User, Long> {
         Optional<List<User>> users = userRepository.findAllOptionalByRole(ERole.MANAGER);
         return users.get().stream().map(x -> IUserMapper.INSTANCE.toSummaryResponseDto(x)).collect(Collectors.toList());
     }
-    public List<SummaryResponseDto> findAllEmployee(){
+    public List<SummaryResponseDto> findAllEmployee(Long companyid){
 
-        Optional<List<User>> users = userRepository.findAllOptionalByRole(ERole.EMPLOYEE);
+        Optional<List<User>> users = userRepository.findAllOptionalByRoleAndCompanyid(ERole.EMPLOYEE,companyid);
         return users.get().stream().map(x -> IUserMapper.INSTANCE.toSummaryResponseDto(x)).collect(Collectors.toList());
     }
     public DetailResponseDto seeDetail(Long authid){

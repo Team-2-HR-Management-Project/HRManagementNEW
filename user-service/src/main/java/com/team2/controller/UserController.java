@@ -49,8 +49,8 @@ public class UserController {
     }
 
     @GetMapping(FINDALL_EMPLOYEE)
-    public ResponseEntity<List<SummaryResponseDto>> findAllEmployee(){
-        return ResponseEntity.ok(userService.findAllEmployee());
+    public ResponseEntity<List<SummaryResponseDto>> findAllEmployee(@PathVariable Long companyid){
+        return ResponseEntity.ok(userService.findAllEmployee(companyid));
     }
     @GetMapping(SEE_DETAIL)
     public ResponseEntity<DetailResponseDto> seeDetail(@PathVariable Long authid){
