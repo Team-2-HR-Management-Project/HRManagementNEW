@@ -34,13 +34,13 @@ public class LeaveController {
         return ResponseEntity.ok(leaveService.updateLeave(dto));
     }
 
-    @PostMapping(FINDALLLEAVES)
-    public ResponseEntity<List<LeaveResponseDto>> getLeaves(@RequestBody @PathVariable Long managerid){
+    @GetMapping(FINDALLLEAVES)
+    public ResponseEntity<List<LeaveResponseDto>> getLeaves(@PathVariable Long managerid){
         return ResponseEntity.ok(leaveService.getLeaves(managerid));
     }
 
-    @PostMapping(FINDMYLEAVES)
-    public ResponseEntity<List<LeaveResponseDto>> getMyLeaves(@RequestBody @PathVariable Long authid){
+    @GetMapping(FINDMYLEAVES)
+    public ResponseEntity<List<LeaveResponseDto>> getMyLeaves(@PathVariable Long authid){
         return ResponseEntity.ok(leaveService.getMyLeaves(authid));
     }
 
