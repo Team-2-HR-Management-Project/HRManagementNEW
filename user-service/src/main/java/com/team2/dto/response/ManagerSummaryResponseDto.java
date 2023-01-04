@@ -15,6 +15,7 @@ public class ManagerSummaryResponseDto {
     private Long id;
     private Long userid;
     private Long managerid;
+    private Long companyid;
     private String name;
     private String surname;
     private String email;

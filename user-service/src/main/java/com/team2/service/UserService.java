@@ -164,6 +164,7 @@ public class UserService extends ServiceManager<User, Long> {
                 return DetailResponseDto.builder()
                         .id(user.get().getId())
                         .authid(user.get().getAuthid())
+                        .companyid(user.get().getCompanyid())
                         .name(user.get().getName())
                         .middleName(user.get().getMiddleName())
                         .surname(user.get().getSurname())
@@ -221,7 +222,8 @@ public class UserService extends ServiceManager<User, Long> {
                         .address(user.get().getAddress())
                         .photo(user.get().getPhoto())
                         .dob(user.get().getDob())
-                        .placeOfBirth(user.get().getPlaceOfBirth())
+                         .companyid(user.get().getCompanyid())
+                         .placeOfBirth(user.get().getPlaceOfBirth())
                         .joinDate(user.get().getJoinDate())
                         .department(user.get().getDepartment())
                         .profession(user.get().getProfession())
@@ -234,5 +236,10 @@ public class UserService extends ServiceManager<User, Long> {
         }else{
             throw new UserManagerException(ErrorType.USER_NOT_FOUND);
         }
+    }
+
+    public List<SummaryResponseDto> findAllColleague(Long companyid) {
+        Optional<List<User>> users = userRepository.findAllOptionalByCompanyid(companyid);
+        return users.get().stream().map(x -> IUserMapper.INSTANCE.toSummaryResponseDto(x)).collect(Collectors.toList());
     }
 }

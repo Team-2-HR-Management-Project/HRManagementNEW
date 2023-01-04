@@ -52,10 +52,16 @@ public class UserController {
     public ResponseEntity<List<SummaryResponseDto>> findAllEmployee(@PathVariable Long companyid){
         return ResponseEntity.ok(userService.findAllEmployee(companyid));
     }
+@GetMapping(FINDALL_COLLEAGUE)
+    public ResponseEntity<List<SummaryResponseDto>> findAllColleague(@PathVariable Long companyid){
+        return ResponseEntity.ok(userService.findAllColleague(companyid));
+    }
+    /*
     @GetMapping(FINDALL_MY_EMPLOYEE)
     public ResponseEntity<List<SummaryResponseDto>> findAllMyEmployee(Long companyid){
         return ResponseEntity.ok(userService.findAllMyEmployee(companyid));
     }
+    */
     @GetMapping(SEE_DETAIL)
     public ResponseEntity<DetailResponseDto> seeDetail(@PathVariable Long authid){
          return ResponseEntity.ok(userService.seeDetail(authid));

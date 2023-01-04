@@ -17,6 +17,7 @@ public class DetailResponseDto {
 
     private Long id;
     private Long authid;
+    private Long companyid;
     private String name;
     private String surname;
     private String email;

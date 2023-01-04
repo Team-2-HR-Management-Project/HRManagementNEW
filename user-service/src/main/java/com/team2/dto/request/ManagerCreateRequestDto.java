@@ -17,5 +17,6 @@ public class ManagerCreateRequestDto {
     private String surname;
     private Long identityNumber;
     private String company;
+    private Long companyid;
 
 }

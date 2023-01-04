@@ -23,4 +23,6 @@ public class SummaryResponseDto {
     private String profession;
     private String photo;
     private String role;
+    private String company;
+    private Long companyid;
 }
