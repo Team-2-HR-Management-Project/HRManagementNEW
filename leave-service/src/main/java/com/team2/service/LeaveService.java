@@ -2,9 +2,11 @@ package com.team2.service;
 
 import com.team2.dto.request.CreateLeaveRequestDto;
 import com.team2.dto.request.UpdateLeaveRequestDto;
+import com.team2.dto.response.DetailResponseDto;
 import com.team2.dto.response.LeaveResponseDto;
 import com.team2.exception.ErrorType;
 import com.team2.exception.LeaveManagerException;
+import com.team2.manager.IUserManager;
 import com.team2.mapper.ILeaveMapper;
 import com.team2.repository.ILeaveRepository;
 import com.team2.repository.entity.Leave;
@@ -15,17 +17,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LeaveService extends ServiceManager<Leave, Long> {
 
     private final ILeaveRepository leaveRepository;
+    private final IUserManager userManager;
 
     private final JwtTokenManager jwtTokenManager;
-    public LeaveService(ILeaveRepository leaveRepository,  JwtTokenManager jwtTokenManager) {
+    public LeaveService(ILeaveRepository leaveRepository,  JwtTokenManager jwtTokenManager,IUserManager userManager) {
         super(leaveRepository);
         this.leaveRepository = leaveRepository;
         this.jwtTokenManager=jwtTokenManager;
+        this.userManager=userManager;
     }
 
     public LeaveResponseDto createLeave(CreateLeaveRequestDto dto) {
@@ -67,7 +72,20 @@ public class LeaveService extends ServiceManager<Leave, Long> {
     public List<LeaveResponseDto> getMyLeaves(Long authid) {
         Optional<List<Leave>> leaves=leaveRepository.findAllOptionalByAuthid(authid);
         if(leaves.isPresent()){
-            return ILeaveMapper.INSTANCE.toLeaveResponseDtoList(leaves.get());
+            List<LeaveResponseDto> leaveResponseDtos=ILeaveMapper.INSTANCE.toLeaveResponseDtoList(leaves.get());
+
+           return leaveResponseDtos.stream().map(x-> {
+                DetailResponseDto detailDto=userManager.findById(x.getEmployeeid()).getBody();
+                x.setName(detailDto.getName());
+                x.setSurname(detailDto.getSurname());
+                x.setPhoto(detailDto.getPhoto());
+                x.setRole(detailDto.getRole());
+                x.setDepartment(detailDto.getDepartment());
+                x.setProfession(detailDto.getProfession());
+                return x;
+
+            }).collect(Collectors.toList());
+
         }else{
             throw new LeaveManagerException((ErrorType.LEAVE_NOT_FOUND));
         }

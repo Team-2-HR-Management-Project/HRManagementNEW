@@ -242,4 +242,31 @@ public class UserService extends ServiceManager<User, Long> {
         Optional<List<User>> users = userRepository.findAllOptionalByCompanyid(companyid);
         return users.get().stream().map(x -> IUserMapper.INSTANCE.toSummaryResponseDto(x)).collect(Collectors.toList());
     }
+
+    public DetailResponseDto findByIdUser(Long id) {
+        Optional<User> user=userRepository.findById(id);
+        if (user.isPresent()){
+            return DetailResponseDto.builder()
+                    .id(user.get().getId())
+                    .authid(user.get().getAuthid())
+                    .name(user.get().getName())
+                    .middleName(user.get().getMiddleName())
+                    .surname(user.get().getSurname())
+                    .secondSurname(user.get().getSecondSurname())
+                    .email(user.get().getEmail())
+                    .phone(user.get().getPhone())
+                    .address(user.get().getAddress())
+                    .photo(user.get().getPhoto())
+                    .dob(user.get().getDob())
+                    .placeOfBirth(user.get().getPlaceOfBirth())
+                    .joinDate(user.get().getJoinDate())
+                    .department(user.get().getDepartment())
+                    .profession(user.get().getProfession())
+                    .role(user.get().getRole().toString())
+                    .identityNumber(user.get().getIdentityNumber())
+                    .build();
+        }else {
+            throw new UserManagerException(ErrorType.USER_NOT_FOUND);
+        }
+    }
 }

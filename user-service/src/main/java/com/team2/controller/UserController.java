@@ -66,6 +66,10 @@ public class UserController {
     public ResponseEntity<DetailResponseDto> seeDetail(@PathVariable Long authid){
          return ResponseEntity.ok(userService.seeDetail(authid));
     }
+    @GetMapping("/findbyid/{id}")
+    public ResponseEntity<DetailResponseDto> findById(@PathVariable Long id){
+        return ResponseEntity.ok(userService.findByIdUser(id));
+    }
 
     @DeleteMapping(DELETEBYID)
     public ResponseEntity<Boolean> deleteUser(@PathVariable Long authid) {
