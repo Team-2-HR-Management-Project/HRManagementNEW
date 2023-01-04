@@ -63,7 +63,19 @@ public class LeaveService extends ServiceManager<Leave, Long> {
     public List<LeaveResponseDto> getLeaves(Long managerid) {
         Optional<List<Leave>> leaves=leaveRepository.findAllOptionalByManagerid(managerid);
         if(leaves.isPresent()){
-            return ILeaveMapper.INSTANCE.toLeaveResponseDtoList(leaves.get());
+            List<LeaveResponseDto> leaveResponseDtos=ILeaveMapper.INSTANCE.toLeaveResponseDtoList(leaves.get());
+
+            return leaveResponseDtos.stream().map(x-> {
+                DetailResponseDto detailDto=userManager.findById(x.getEmployeeid()).getBody();
+                x.setName(detailDto.getName());
+                x.setSurname(detailDto.getSurname());
+                x.setPhoto(detailDto.getPhoto());
+                x.setRole(detailDto.getRole());
+                x.setDepartment(detailDto.getDepartment());
+                x.setProfession(detailDto.getProfession());
+                return x;
+
+            }).collect(Collectors.toList());
         }else{
             throw new LeaveManagerException((ErrorType.LEAVE_NOT_FOUND));
         }
