@@ -13,7 +13,7 @@ import static com.team2.constants.ApiUrls.DELETEBYID;
 @FeignClient(url = "${myapplication.feign.user}/user",name = "user-service-user",decode404 = true)
 public interface IUserManager {
 
-    @GetMapping("/findbyid/{id}")
+    @GetMapping("/findbyuserid/{id}")
     public ResponseEntity<DetailResponseDto> findById(@PathVariable Long id);
 
 }

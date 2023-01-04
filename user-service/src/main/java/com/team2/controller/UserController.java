@@ -66,7 +66,7 @@ public class UserController {
     public ResponseEntity<DetailResponseDto> seeDetail(@PathVariable Long authid){
          return ResponseEntity.ok(userService.seeDetail(authid));
     }
-    @GetMapping("/findbyid/{id}")
+    @GetMapping("/findbyuserid/{id}")
     public ResponseEntity<DetailResponseDto> findById(@PathVariable Long id){
         return ResponseEntity.ok(userService.findByIdUser(id));
     }

@@ -14,5 +14,9 @@ spring:
       ddl-auto: update
     show-sql: true
 
+myapplication:
+  feign:
+    user: http://localhost:8091/api/v1
+
 
 
