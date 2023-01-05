@@ -4,6 +4,7 @@ import com.team2.dto.request.CreateLeaveRequestDto;
 import com.team2.dto.request.NotifyMailRequestDto;
 import com.team2.dto.request.UpdateLeaveRequestDto;
 import com.team2.dto.response.DetailResponseDto;
+import com.team2.dto.response.LeaveDetailResponseDto;
 import com.team2.dto.response.LeaveResponseDto;
 import com.team2.exception.ErrorType;
 import com.team2.exception.LeaveManagerException;
@@ -157,5 +158,25 @@ public class LeaveService extends ServiceManager<Leave, Long> {
         }
     }
 
+    public LeaveDetailResponseDto seeDetail(Long authid){
+        Optional<Leave> leave = leaveRepository.findOptionalByAuthid(authid);
+        if (leave.isPresent()){
+            return LeaveDetailResponseDto.builder()
+                    .id(leave.get().getId())
+                    .authid(leave.get().getAuthid())
+                    .managerid(leave.get().getManagerid())
+                    .employeeid(leave.get().getEmployeeid())
+                    .startDate(leave.get().getStartDate())
+                    .endDate(leave.get().getEndDate())
+                    .message(leave.get().getMessage())
+                    .days(leave.get().getDays())
+                    .creationDate(leave.get().getCreationDate())
+                    .type(leave.get().getType())
+                    .status(leave.get().getStatus())
+                    .build();
+        }else {
+            throw new LeaveManagerException(ErrorType.LEAVE_NOT_FOUND);
+        }
+    }
 
 }

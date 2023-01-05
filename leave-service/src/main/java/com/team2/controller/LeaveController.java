@@ -3,6 +3,7 @@ package com.team2.controller;
 
 import com.team2.dto.request.CreateLeaveRequestDto;
 import com.team2.dto.request.UpdateLeaveRequestDto;
+import com.team2.dto.response.LeaveDetailResponseDto;
 import com.team2.dto.response.LeaveResponseDto;
 import com.team2.service.LeaveService;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +55,9 @@ public class LeaveController {
         return ResponseEntity.ok(leaveService.rejectLeave(id));
     }
 
-
+    @GetMapping(SEE_DETAIL)
+    public ResponseEntity<LeaveDetailResponseDto> seeDetail(@PathVariable Long authid){
+        return ResponseEntity.ok(leaveService.seeDetail(authid));
+    }
 
 }
