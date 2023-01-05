@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FindByToken {
     String token;
-    Long id;
+    String id;
 }

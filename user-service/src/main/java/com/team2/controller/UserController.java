@@ -85,7 +85,7 @@ public class UserController {
     public ResponseEntity<User> getById(@RequestBody @PathVariable Long id) {
         return ResponseEntity.ok(userService.getById(id));
     }
-    @GetMapping("/findbytoken")
+    @PostMapping("/findbytoken")
     public ResponseEntity<DetailResponseDto> findbyToken(@RequestBody FindByToken token) {
 
         return ResponseEntity.ok(userService.findByToken(token.getToken()));
