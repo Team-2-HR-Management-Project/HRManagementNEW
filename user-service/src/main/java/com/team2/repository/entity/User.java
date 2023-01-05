@@ -33,6 +33,7 @@ public class User implements Serializable {
     private String secondSurname;
     private Long dob;
     private String placeOfBirth;
+
     private Long identityNumber;
     private Long joinDate;
     @Enumerated(EnumType.STRING)

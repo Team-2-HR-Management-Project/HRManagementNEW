@@ -25,16 +25,16 @@ public class UserController {
     private final UserService userService;
 
      @PostMapping(CREATE)
-    public ResponseEntity<Boolean> createUser(@RequestBody  CreateRequestDto dto){
+    public ResponseEntity<Boolean> createUser(@RequestBody @Valid CreateRequestDto dto){
         return ResponseEntity.ok(userService.createUser(dto));
     }
 
     @PutMapping(UPDATE)
-    public ResponseEntity<DetailResponseDto> updateUser(@RequestBody UpdateRequestDto dto){
+    public ResponseEntity<DetailResponseDto> updateUser(@RequestBody @Valid UpdateRequestDto dto){
         return ResponseEntity.ok(userService.updateUser(dto));
     }
     @PutMapping(UPDATEALL)
-    public ResponseEntity<DetailResponseDto> updateAllUser(@RequestBody UpdateAllRequestDto dto){
+    public ResponseEntity<DetailResponseDto> updateAllUser(@RequestBody @Valid UpdateAllRequestDto dto){
         return ResponseEntity.ok(userService.updateAllUser(dto));
     }
 

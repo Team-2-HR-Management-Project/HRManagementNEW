@@ -24,7 +24,7 @@ public class RegisterRequestDto {
     @NotBlank
     private String surname;
     @NotNull
-    // Note validation bakılacak
+    @Size(min = 11, max = 11 ,message = "TC can be 11 characters")
     private Long identityNumber;
     private  String adminCode;
 }
