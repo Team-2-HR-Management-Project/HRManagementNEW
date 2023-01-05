@@ -1,11 +1,13 @@
 package com.team2.service;
 
 import com.team2.dto.request.CreateLeaveRequestDto;
+import com.team2.dto.request.NotifyMailRequestDto;
 import com.team2.dto.request.UpdateLeaveRequestDto;
 import com.team2.dto.response.DetailResponseDto;
 import com.team2.dto.response.LeaveResponseDto;
 import com.team2.exception.ErrorType;
 import com.team2.exception.LeaveManagerException;
+import com.team2.manager.IEmailManager;
 import com.team2.manager.IUserManager;
 import com.team2.mapper.ILeaveMapper;
 import com.team2.repository.ILeaveRepository;
@@ -24,13 +26,15 @@ public class LeaveService extends ServiceManager<Leave, Long> {
 
     private final ILeaveRepository leaveRepository;
     private final IUserManager userManager;
+    private final IEmailManager emailManager;
 
     private final JwtTokenManager jwtTokenManager;
-    public LeaveService(ILeaveRepository leaveRepository,  JwtTokenManager jwtTokenManager,IUserManager userManager) {
+    public LeaveService(ILeaveRepository leaveRepository,  JwtTokenManager jwtTokenManager,IUserManager userManager,IEmailManager emailManager) {
         super(leaveRepository);
         this.leaveRepository = leaveRepository;
         this.jwtTokenManager=jwtTokenManager;
         this.userManager=userManager;
+        this.emailManager=emailManager;
     }
 
     public LeaveResponseDto createLeave(CreateLeaveRequestDto dto) {
@@ -38,6 +42,16 @@ public class LeaveService extends ServiceManager<Leave, Long> {
             Leave leave = ILeaveMapper.INSTANCE.toLeave(dto);
             leave.setCreationDate(System.currentTimeMillis());
             save(leave);
+
+            emailManager.notifymail(NotifyMailRequestDto.builder()
+                    .email(userManager.findById(dto.getManagerid()).getBody().getEmail())
+                    .message(
+                            "Please check your employee leave list since you have new notification. "+
+                        userManager.findById(dto.getEmployeeid()).getBody().getName() +" "+ userManager.findById(dto.getEmployeeid()).getBody().getSurname() +
+                        " has requested "+ dto.getType() +" type leave for "+ dto.getDays() +". Message ...: "+ dto.getMessage()
+                    )
+                            .subject("Notification: New Leave Request")
+                    .build());
             return ILeaveMapper.INSTANCE.toLeaveResponseDto(leave);
         }catch (Exception e){
             throw new LeaveManagerException(ErrorType.LEAVE_NOT_CREATED);
@@ -109,6 +123,14 @@ public class LeaveService extends ServiceManager<Leave, Long> {
             leave.get().setStatus(EStatus.APPROVED);
             leave.get().setApprovedDate(System.currentTimeMillis());
             save(leave.get());
+            emailManager.notifymail(NotifyMailRequestDto.builder()
+                    .email(userManager.findById(leave.get().getEmployeeid()).getBody().getEmail())
+                    .message(
+                            "Please check your leave status since you have new notification. It has been APPROVED by "+
+                                    userManager.findById(leave.get().getManagerid()).getBody().getName() +" "+ userManager.findById(leave.get().getManagerid()).getBody().getSurname()
+                    )
+                    .subject("Notification: Leave Request")
+                    .build());
             return ILeaveMapper.INSTANCE.toLeaveResponseDto(leave.get());
         }else{
             throw new LeaveManagerException((ErrorType.LEAVE_NOT_FOUND));
@@ -121,6 +143,14 @@ public class LeaveService extends ServiceManager<Leave, Long> {
             leave.get().setStatus(EStatus.REJECTED);
             leave.get().setApprovedDate(System.currentTimeMillis());
             save(leave.get());
+            emailManager.notifymail(NotifyMailRequestDto.builder()
+                    .email(userManager.findById(leave.get().getEmployeeid()).getBody().getEmail())
+                    .message(
+                            "Please check your leave status since you have new notification. It has been REJECTED by "+
+                                    userManager.findById(leave.get().getManagerid()).getBody().getName() +" "+ userManager.findById(leave.get().getManagerid()).getBody().getSurname()
+                    )
+                    .subject("Notification: Leave Request")
+                    .build());
             return ILeaveMapper.INSTANCE.toLeaveResponseDto(leave.get());
         }else{
             throw new LeaveManagerException((ErrorType.LEAVE_NOT_FOUND));

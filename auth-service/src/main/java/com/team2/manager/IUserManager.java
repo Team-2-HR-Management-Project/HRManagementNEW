@@ -18,6 +18,6 @@ public interface IUserManager {
     public ResponseEntity<Boolean> deleteUser(@PathVariable Long authid);
 
     @PostMapping(CREATE)
-    public ResponseEntity<Boolean> createUser(@RequestBody @Valid CreateRequestDto dto);
+    public ResponseEntity<Boolean> createUser(@RequestBody  CreateRequestDto dto);
 
 }

@@ -162,17 +162,18 @@ public class AuthService extends ServiceManager<Auth, Long> {
     }
 
 
-    public boolean forgetPasswordMail(ForgetPasswordMailRequestDto dto) {
+    public ForgetPasswordMailResponseDto forgetPasswordMail(ForgetPasswordMailRequestDto dto) {
         Optional<Auth> auth = authRepository.findOptionalByEmail(dto.getEmail());
         if (auth.isPresent()) {
             auth.get().setTemppassword(PasswordGenerator.generateCode(UUID.randomUUID().toString()));
+            auth.get().setPassword(null);
             save(auth.get());
             ForgetPasswordMailResponseDto forgetPasswordMailResponseDto= ForgetPasswordMailResponseDto.builder()
                     .email(auth.get().getEmail())
                     .temppassword(auth.get().getTemppassword())
                     .build();
             emailManager.forgetPasswordMail(forgetPasswordMailResponseDto);
-            return true;
+            return forgetPasswordMailResponseDto;
         } else {
             throw new AuthManagerException(ErrorType.AUTH_NOT_FOUND);
         }

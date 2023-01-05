@@ -13,5 +13,7 @@ import lombok.NoArgsConstructor;
 public class CreatePasswordResponseDto {
     private Long id;
     private String email;
+    @Builder.Default
+    private int code=300;
 
 }

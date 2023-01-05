@@ -14,4 +14,6 @@ public class ForgetPasswordMailResponseDto {
     private Long id;
     private String email;
     private String temppassword;
+    @Builder.Default
+    private int code=600;
 }

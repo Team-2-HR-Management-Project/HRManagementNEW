@@ -52,7 +52,7 @@ public class AuthController {
     }
     @PostMapping(FORGETPASSWORDMAIL)
     @Operation(summary = "The Method for saving a user by sending mail")
-    public ResponseEntity<Boolean> registerByMail(@RequestBody @Valid ForgetPasswordMailRequestDto dto) {
+    public ResponseEntity<ForgetPasswordMailResponseDto> registerByMail(@RequestBody @Valid ForgetPasswordMailRequestDto dto) {
         return ResponseEntity.ok(authService.forgetPasswordMail(dto));
     }
 

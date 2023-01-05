@@ -25,7 +25,7 @@ public class UserController {
     private final UserService userService;
 
      @PostMapping(CREATE)
-    public ResponseEntity<Boolean> createUser(@RequestBody @Valid CreateRequestDto dto){
+    public ResponseEntity<Boolean> createUser(@RequestBody  CreateRequestDto dto){
         return ResponseEntity.ok(userService.createUser(dto));
     }
 
