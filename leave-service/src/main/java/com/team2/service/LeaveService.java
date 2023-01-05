@@ -179,4 +179,20 @@ public class LeaveService extends ServiceManager<Leave, Long> {
         }
     }
 
+    public LeaveResponseDto seeLeaveDetail(Long id) {
+        Optional<Leave> leave=findById(id);
+        if(leave.isPresent()){
+            LeaveResponseDto dto = ILeaveMapper.INSTANCE.toLeaveResponseDto(leave.get());
+            DetailResponseDto detailDto=userManager.findById(leave.get().getEmployeeid()).getBody();
+            dto.setName(detailDto.getName());
+            dto.setSurname(detailDto.getSurname());
+            dto.setPhoto(detailDto.getPhoto());
+            dto.setProfession(detailDto.getProfession());
+            dto.setDepartment(detailDto.getDepartment());
+            dto.setIdentityNumber(detailDto.getIdentityNumber());
+            return dto;
+        }else{
+            throw new LeaveManagerException((ErrorType.LEAVE_NOT_FOUND));
+        }
+    }
 }

@@ -2,6 +2,7 @@ package com.team2.controller;
 
 
 import com.team2.dto.request.CreateLeaveRequestDto;
+import com.team2.dto.request.LeaveRequestDto;
 import com.team2.dto.request.UpdateLeaveRequestDto;
 import com.team2.dto.response.LeaveDetailResponseDto;
 import com.team2.dto.response.LeaveResponseDto;
@@ -58,6 +59,11 @@ public class LeaveController {
     @GetMapping(SEE_DETAIL)
     public ResponseEntity<LeaveDetailResponseDto> seeDetail(@PathVariable Long authid){
         return ResponseEntity.ok(leaveService.seeDetail(authid));
+    }
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping ("/seeleavedetail")
+    public ResponseEntity<LeaveResponseDto> seeLeaveDetail(@RequestBody LeaveRequestDto dto){
+        return ResponseEntity.ok(leaveService.seeLeaveDetail(dto.getId()));
     }
 
 }
