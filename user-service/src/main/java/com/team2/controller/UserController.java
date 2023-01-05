@@ -47,6 +47,10 @@ public class UserController {
     public ResponseEntity<List<SummaryResponseDto>> findAllManager(){
         return ResponseEntity.ok(userService.findAllManager());
     }
+    @GetMapping("/findallmanagerbycompanyid/{companyid}")
+    public ResponseEntity<List<SummaryResponseDto>> findAllManagerByCompanyid(@PathVariable Long companyid){
+        return ResponseEntity.ok(userService.findAllManagerByCompanyid(companyid));
+    }
 
     @GetMapping(FINDALL_EMPLOYEE)
     public ResponseEntity<List<SummaryResponseDto>> findAllEmployee(@PathVariable Long companyid){

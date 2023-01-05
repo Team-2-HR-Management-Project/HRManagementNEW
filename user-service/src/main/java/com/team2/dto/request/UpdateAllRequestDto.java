@@ -31,8 +31,7 @@ public class UpdateAllRequestDto {
     private String secondSurname;
     private Long dob;
     private String placeOfBirth;
-    @NotNull
-    @Size(min = 11, max = 11 ,message = "TC can be 11 characters")
+    //@Size(min = 11, max = 11 ,message = "TC can be 11 characters")
     private Long identityNumber;
     private Long joinDate;
 }

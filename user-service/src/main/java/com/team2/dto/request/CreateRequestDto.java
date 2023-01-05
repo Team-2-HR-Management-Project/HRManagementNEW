@@ -22,9 +22,6 @@ public class CreateRequestDto {
     private String email;
     private String name;
     private String surname;
-    @NotNull
-    @Size(min = 11, max = 11 ,message = "TC can be 11 characters")
-    private Long identityNumber;
     private ERole role;
     private Long companyid;
 }

@@ -46,13 +46,13 @@ public class LeaveController {
         return ResponseEntity.ok(leaveService.getMyLeaves(authid));
     }
 
-    @PostMapping(APPROVELEAVE)
-    public ResponseEntity<LeaveResponseDto> approveLeave(@RequestBody @PathVariable Long id){
+    @GetMapping(APPROVELEAVE)
+    public ResponseEntity<LeaveResponseDto> approveLeave( @PathVariable Long id){
         return ResponseEntity.ok(leaveService.approveLeave(id));
     }
 
-    @PostMapping(REJECTLEAVE)
-    public ResponseEntity<LeaveResponseDto> rejectLeave(@RequestBody @PathVariable Long id){
+    @GetMapping(REJECTLEAVE)
+    public ResponseEntity<LeaveResponseDto> rejectLeave( @PathVariable Long id){
         return ResponseEntity.ok(leaveService.rejectLeave(id));
     }
 
@@ -60,7 +60,7 @@ public class LeaveController {
     public ResponseEntity<LeaveDetailResponseDto> seeDetail(@PathVariable Long authid){
         return ResponseEntity.ok(leaveService.seeDetail(authid));
     }
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @PostMapping ("/seeleavedetail")
     public ResponseEntity<LeaveResponseDto> seeLeaveDetail(@RequestBody LeaveRequestDto dto){
         return ResponseEntity.ok(leaveService.seeLeaveDetail(dto.getId()));

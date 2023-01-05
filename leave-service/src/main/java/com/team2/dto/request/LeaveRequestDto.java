@@ -12,9 +12,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LeaveRequestDto implements Serializable {
+public class LeaveRequestDto {
 
     private Long id;
+    private String code;
 
 
 

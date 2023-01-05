@@ -269,4 +269,9 @@ public class UserService extends ServiceManager<User, Long> {
             throw new UserManagerException(ErrorType.USER_NOT_FOUND);
         }
     }
+
+    public  List<SummaryResponseDto> findAllManagerByCompanyid(Long companyid) {
+        Optional<List<User>> users = userRepository.findAllOptionalByRoleAndCompanyid(ERole.MANAGER,companyid);
+        return users.get().stream().map(x -> IUserMapper.INSTANCE.toSummaryResponseDto(x)).collect(Collectors.toList());
+    }
 }
