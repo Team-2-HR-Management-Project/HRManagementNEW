@@ -17,6 +17,7 @@ spring:
 myapplication:
   feign:
     user: http://localhost:8091/api/v1
+    email: http://localhost:8099/api/v1
 
 
 
