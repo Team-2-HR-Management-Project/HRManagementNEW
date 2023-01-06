@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import team2.dto.request.ActivateCompanyRequestDto;
 import team2.dto.request.CreateRequestDto;
 import team2.dto.request.UpdateRequestDto;
-import team2.dto.response.DetailResponseDto;
+import team2.dto.response.CompanyDetailResponseDto;
 import team2.dto.response.SummaryResponseDto;
 import team2.exception.CompanyManagerException;
 import team2.exception.ErrorType;
@@ -38,7 +38,7 @@ public class CompanyService extends ServiceManager<Company, Long> {
             throw new CompanyManagerException(ErrorType.COMPANY_NOT_CREATED);
         }
     }
-    public DetailResponseDto updateCompany(UpdateRequestDto dto){
+    public CompanyDetailResponseDto updateCompany(UpdateRequestDto dto){
         Optional<Company> company=companyRepository.findById(dto.getId());
         if(company.isPresent()){
             try{
@@ -64,7 +64,7 @@ public class CompanyService extends ServiceManager<Company, Long> {
         return companies.stream().map(x -> ICompanyMapper.INSTANCE.toSummaryResponseDto(x)).collect(Collectors.toList());
     }
 
-    public DetailResponseDto seeDetail(Long id){
+    public CompanyDetailResponseDto seeDetail(Long id){
 
         Optional<Company> company=companyRepository.findOptionalById(id);
         if (company.isPresent()){
@@ -104,16 +104,17 @@ public class CompanyService extends ServiceManager<Company, Long> {
     }
 
 
-    public Company getById(Long id) {
+    public CompanyDetailResponseDto getById(Long id) {
         Optional<Company> company = companyRepository.findOptionalById(id);
+
         if (company.isPresent()) {
-            return company.get();
+            return ICompanyMapper.INSTANCE.toDetailResponseDto(company.get());
         } else {
             throw new CompanyManagerException(ErrorType.COMPANY_NOT_FOUND);
         }
     }
 
-    public DetailResponseDto findByToken(String token) {
+    public CompanyDetailResponseDto findByToken(String token) {
         Optional<Long> id = jwtTokenManager.getUserId(token);
         if (id.isPresent()) {
             Optional<Company> company = companyRepository.findOptionalById(id.get());

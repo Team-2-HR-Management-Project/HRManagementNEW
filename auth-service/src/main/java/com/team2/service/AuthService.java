@@ -119,6 +119,7 @@ public class AuthService extends ServiceManager<Auth, Long> {
                     .name(dto.getName())
                     .surname(dto.getSurname())
                     .role(dto.getRole())
+                    .phone(dto.getPhone())
                     .companyid(dto.getCompanyid())
                     .build());
 

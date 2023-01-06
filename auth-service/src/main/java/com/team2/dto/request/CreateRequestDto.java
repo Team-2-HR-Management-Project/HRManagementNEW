@@ -22,6 +22,7 @@ public class CreateRequestDto {
     private Long authid;
     private String name;
     private String surname;
+    private String phone;
     private Long identityNumber;
     private ERole role;
     private Long companyid;

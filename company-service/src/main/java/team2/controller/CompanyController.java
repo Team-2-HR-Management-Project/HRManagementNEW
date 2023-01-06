@@ -8,7 +8,7 @@ import team2.dto.request.ActivateCompanyRequestDto;
 import team2.dto.request.CreateRequestDto;
 import team2.dto.request.FindByToken;
 import team2.dto.request.UpdateRequestDto;
-import team2.dto.response.DetailResponseDto;
+import team2.dto.response.CompanyDetailResponseDto;
 import team2.dto.response.SummaryResponseDto;
 import team2.repository.entity.Company;
 import team2.service.CompanyService;
@@ -35,7 +35,7 @@ public class CompanyController {
     }
 
     @PutMapping(UPDATE)
-    public ResponseEntity<DetailResponseDto> updateUser(@RequestBody UpdateRequestDto dto){
+    public ResponseEntity<CompanyDetailResponseDto> updateUser(@RequestBody UpdateRequestDto dto){
         return ResponseEntity.ok(companyService.updateCompany(dto));
     }
 
@@ -44,7 +44,7 @@ public class CompanyController {
         return ResponseEntity.ok(companyService.findAllSummary());
     }
     @GetMapping(SEE_DETAIL)
-    public ResponseEntity<DetailResponseDto> seeDetail(@PathVariable Long id){
+    public ResponseEntity<CompanyDetailResponseDto> seeDetail(@PathVariable Long id){
          return ResponseEntity.ok(companyService.seeDetail(id));
     }
 
@@ -59,12 +59,12 @@ public class CompanyController {
     }
 
     @GetMapping(FINDBYID)
-    public ResponseEntity<Company> getById(@RequestBody @PathVariable Long id) {
+    public ResponseEntity<CompanyDetailResponseDto> getById(@RequestBody @PathVariable Long id) {
         return ResponseEntity.ok(companyService.getById(id));
     }
 
     @PostMapping("/findbytoken")
-    public ResponseEntity<DetailResponseDto> findbyToken(@RequestBody FindByToken token) {
+    public ResponseEntity<CompanyDetailResponseDto> findbyToken(@RequestBody FindByToken token) {
 
         return ResponseEntity.ok(companyService.findByToken(token.getToken()));
 

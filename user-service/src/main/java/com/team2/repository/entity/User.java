@@ -31,18 +31,18 @@ public class User implements Serializable {
     private String middleName;
     private String surname;
     private String secondSurname;
-    private Long dob;
+    private String dob;
     private String placeOfBirth;
 
     private Long identityNumber;
-    private Long joinDate;
+    private String joinDate;
     @Enumerated(EnumType.STRING)
     private EDepartment department;
     private String profession;
     private String email;
     private String phone;
     private String address;
-    private Long resignDate;
+    private String resignDate;
     @Enumerated(EnumType.STRING)
     private ERole role;
     @Enumerated(EnumType.STRING)

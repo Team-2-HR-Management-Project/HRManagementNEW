@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 import team2.dto.request.ActivateCompanyRequestDto;
 import team2.dto.request.CreateRequestDto;
 import team2.dto.request.UpdateRequestDto;
-import team2.dto.response.DetailResponseDto;
+import team2.dto.response.CompanyDetailResponseDto;
 import team2.dto.response.SummaryResponseDto;
 import team2.repository.entity.Company;
 
@@ -19,6 +19,6 @@ public interface ICompanyMapper {
     Company toCompany(final CreateRequestDto dto);
     Company toCompany(final UpdateRequestDto dto);
     SummaryResponseDto toSummaryResponseDto(final Company company);
-    DetailResponseDto toDetailResponseDto(final Company company);
+    CompanyDetailResponseDto toDetailResponseDto(final Company company);
     Company toCompany(final ActivateCompanyRequestDto dto);
 }

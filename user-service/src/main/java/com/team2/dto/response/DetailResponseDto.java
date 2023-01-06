@@ -18,6 +18,7 @@ public class DetailResponseDto {
     private Long id;
     private Long authid;
     private Long companyid;
+    private String company;
     private String name;
     private String surname;
     private String email;
@@ -28,9 +29,9 @@ public class DetailResponseDto {
     private String photo;
     private String middleName;
     private String secondSurname;
-    private Long dob;
+    private String dob;
     private String placeOfBirth;
     private Long identityNumber;
-    private Long joinDate;
+    private String joinDate;
     private String role;
 }

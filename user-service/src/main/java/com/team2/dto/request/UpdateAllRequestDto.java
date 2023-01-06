@@ -29,9 +29,9 @@ public class UpdateAllRequestDto {
     private String photo;
     private String middleName;
     private String secondSurname;
-    private Long dob;
+    private String dob;
     private String placeOfBirth;
     //@Size(min = 11, max = 11 ,message = "TC can be 11 characters")
     private Long identityNumber;
-    private Long joinDate;
+    private String joinDate;
 }

@@ -9,6 +9,7 @@ import com.team2.dto.response.SummaryResponseDto;
 import com.team2.exception.ErrorType;
 import com.team2.exception.UserManagerException;
 import com.team2.manager.IAuthManager;
+import com.team2.manager.ICompanyManager;
 import com.team2.mapper.IUserMapper;
 import com.team2.repository.IUserRepository;
 import com.team2.repository.entity.User;
@@ -29,15 +30,19 @@ public class UserService extends ServiceManager<User, Long> {
     private final IUserRepository userRepository;
     private final IAuthManager authManager;
     private final JwtTokenManager jwtTokenManager;
-    public UserService(IUserRepository userRepository,IAuthManager authManager,JwtTokenManager jwtTokenManager) {
+    private final ICompanyManager companyManager;
+    public UserService(IUserRepository userRepository,IAuthManager authManager,JwtTokenManager jwtTokenManager,ICompanyManager companyManager) {
         super(userRepository);
         this.userRepository = userRepository;
         this.authManager=authManager;
         this.jwtTokenManager=jwtTokenManager;
+        this.companyManager=companyManager;
     }
     public Boolean createUser(CreateRequestDto dto){
         try{
-            User user = userRepository.save(IUserMapper.INSTANCE.toUser(dto));
+            User user = IUserMapper.INSTANCE.toUser(dto);
+                user.setCompany(companyManager.getById(dto.getCompanyid()).getBody().getName());
+                save(user);
             return true;
         }catch (Exception e){
             throw new UserManagerException(ErrorType.USER_NOT_CREATED);
@@ -103,6 +108,7 @@ public class UserService extends ServiceManager<User, Long> {
                     .department(user.get().getDepartment())
                     .profession(user.get().getProfession())
                     .role(user.get().getRole().toString())
+                    .company(user.get().getCompany())
                     .identityNumber(user.get().getIdentityNumber())
                     .build();
         }else {
@@ -179,6 +185,7 @@ public class UserService extends ServiceManager<User, Long> {
                         .department(user.get().getDepartment())
                         .profession(user.get().getProfession())
                         .role(user.get().getRole().toString())
+                        .company(user.get().getCompany())
                         .identityNumber(user.get().getIdentityNumber())
                         .build();
             } else {
@@ -228,7 +235,8 @@ public class UserService extends ServiceManager<User, Long> {
                         .department(user.get().getDepartment())
                         .profession(user.get().getProfession())
                         .role(user.get().getRole().toString())
-                        .identityNumber(user.get().getIdentityNumber())
+                         .company(user.get().getCompany())
+                         .identityNumber(user.get().getIdentityNumber())
                         .build();
             }catch (Exception e){
                 throw new UserManagerException(ErrorType.USER_NOT_UPDATED);
@@ -263,6 +271,7 @@ public class UserService extends ServiceManager<User, Long> {
                     .department(user.get().getDepartment())
                     .profession(user.get().getProfession())
                     .role(user.get().getRole().toString())
+                    .company(user.get().getCompany())
                     .identityNumber(user.get().getIdentityNumber())
                     .build();
         }else {

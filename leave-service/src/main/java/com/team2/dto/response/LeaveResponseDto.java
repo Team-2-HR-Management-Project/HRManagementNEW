@@ -21,8 +21,8 @@ public class LeaveResponseDto implements Serializable {
     private Long managerid;
     private Long employeeid;
     private String message;
-    private Long startDate;
-    private Long endDate;
+    private String startDate;
+    private String endDate;
     private Integer days;
     private Long creationDate;
     private Long updateDate;
@@ -40,10 +40,10 @@ public class LeaveResponseDto implements Serializable {
     private String photo;
     private String middleName;
     private String secondSurname;
-    private Long dob;
+    private String dob;
     private String placeOfBirth;
     private Long identityNumber;
-    private Long joinDate;
+    private String joinDate;
     private String role;
 
 }

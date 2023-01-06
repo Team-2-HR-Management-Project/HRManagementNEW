@@ -18,3 +18,4 @@ spring:
 myapplication:
   feign:
     auth: http://localhost:8090/api/v1
+    company: http://localhost:8093/api/v1

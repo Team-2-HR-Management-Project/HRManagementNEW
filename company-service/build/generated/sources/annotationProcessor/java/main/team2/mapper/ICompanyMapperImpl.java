@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 import team2.dto.request.ActivateCompanyRequestDto;
 import team2.dto.request.CreateRequestDto;
 import team2.dto.request.UpdateRequestDto;
-import team2.dto.response.DetailResponseDto;
+import team2.dto.response.CompanyDetailResponseDto;
 import team2.dto.response.SummaryResponseDto;
 import team2.repository.entity.Company;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-05T11:01:12+0300",
+    date = "2023-01-06T12:17:14+0300",
     comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -72,28 +72,28 @@ public class ICompanyMapperImpl implements ICompanyMapper {
     }
 
     @Override
-    public DetailResponseDto toDetailResponseDto(Company company) {
+    public CompanyDetailResponseDto toDetailResponseDto(Company company) {
         if ( company == null ) {
             return null;
         }
 
-        DetailResponseDto.DetailResponseDtoBuilder detailResponseDto = DetailResponseDto.builder();
+        CompanyDetailResponseDto.CompanyDetailResponseDtoBuilder companyDetailResponseDto = CompanyDetailResponseDto.builder();
 
-        detailResponseDto.id( company.getId() );
-        detailResponseDto.name( company.getName() );
-        detailResponseDto.title( company.getTitle() );
-        detailResponseDto.taxNumber( company.getTaxNumber() );
-        detailResponseDto.taxOffice( company.getTaxOffice() );
-        detailResponseDto.phone( company.getPhone() );
-        detailResponseDto.address( company.getAddress() );
-        detailResponseDto.email( company.getEmail() );
-        detailResponseDto.numberOfEmployees( company.getNumberOfEmployees() );
-        detailResponseDto.dateOfEstablishment( company.getDateOfEstablishment() );
-        detailResponseDto.dateOfContract( company.getDateOfContract() );
-        detailResponseDto.contractExpiryDate( company.getContractExpiryDate() );
-        detailResponseDto.logo( company.getLogo() );
+        companyDetailResponseDto.id( company.getId() );
+        companyDetailResponseDto.name( company.getName() );
+        companyDetailResponseDto.title( company.getTitle() );
+        companyDetailResponseDto.taxNumber( company.getTaxNumber() );
+        companyDetailResponseDto.taxOffice( company.getTaxOffice() );
+        companyDetailResponseDto.phone( company.getPhone() );
+        companyDetailResponseDto.address( company.getAddress() );
+        companyDetailResponseDto.email( company.getEmail() );
+        companyDetailResponseDto.numberOfEmployees( company.getNumberOfEmployees() );
+        companyDetailResponseDto.dateOfEstablishment( company.getDateOfEstablishment() );
+        companyDetailResponseDto.dateOfContract( company.getDateOfContract() );
+        companyDetailResponseDto.contractExpiryDate( company.getContractExpiryDate() );
+        companyDetailResponseDto.logo( company.getLogo() );
 
-        return detailResponseDto.build();
+        return companyDetailResponseDto.build();
     }
 
     @Override

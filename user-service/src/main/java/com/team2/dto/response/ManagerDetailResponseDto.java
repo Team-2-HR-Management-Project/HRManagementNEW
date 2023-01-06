@@ -31,11 +31,11 @@ public class ManagerDetailResponseDto {
     private String middleName;
     private String secondSurname;
     private String company;
-    private Long dob;
+    private String dob;
     private String placeOfBirth;
     private Long identityNumber;
-    private Long joinDate;
-    private Long resignDate;
+    private String joinDate;
+    private String resignDate;
     private String status;
     private String role;
 

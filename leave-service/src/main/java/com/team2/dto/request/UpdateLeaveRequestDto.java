@@ -21,9 +21,9 @@ public class UpdateLeaveRequestDto implements Serializable {
     private Long employeeid;
     private String message;
     @NotBlank
-    private Long startDate;
+    private String startDate;
     @NotBlank
-    private Long endDate;
+    private String endDate;
     private Integer days;
     private EType type;
 

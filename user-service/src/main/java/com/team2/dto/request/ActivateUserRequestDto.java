@@ -31,9 +31,9 @@ public class ActivateUserRequestDto {
     private String photo;
     private String middleName;
     private String secondSurname;
-    private Long dob;
+    private String dob;
     private String placeOfBirth;
-    private Long joinDate;
+    private String joinDate;
     private Long authid;
 
 

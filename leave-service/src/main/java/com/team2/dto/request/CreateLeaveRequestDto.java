@@ -20,8 +20,8 @@ public class CreateLeaveRequestDto implements Serializable {
     private Long managerid;
     private Long employeeid;
     private String message;
-    private Long startDate;
-    private Long endDate;
+    private String startDate;
+    private String endDate;
     private Integer days;
     private EType type;
 
