@@ -24,34 +24,40 @@ public class AuthController {
 
     @PostMapping(REGISTER)
     @Operation(summary = "The Method for saving a user")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<RegisterResponseDto> register(@RequestBody @Valid RegisterRequestDto dto) {
         return ResponseEntity.ok(authService.register(dto));
     }
 
     @PostMapping(REGISTERBYMAIL)
     @Operation(summary = "The Method for saving a user by sending mail")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<RegisterByMailResponseDto> registerByMail(@RequestBody @Valid RegisterByMailRequestDto dto) {
         return ResponseEntity.ok(authService.registerByMail(dto));
     }
 
     @PostMapping(LOGIN)
     @Operation(summary = "The Method for signing in")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto dto) {
         return ResponseEntity.ok(authService.login(dto).get());
     }
 
     @DeleteMapping(DELETE)
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<Boolean> deleteAuth(@PathVariable String token) {
 
         return ResponseEntity.ok(authService.deleteAuth(token));
     }
 
     @PostMapping("/createpassword")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<CreatePasswordResponseDto> activateUser(@RequestBody CreatePasswordRequestDto dto){
         return ResponseEntity.ok(authService.createPassword(dto));
     }
     @PostMapping(FORGETPASSWORDMAIL)
     @Operation(summary = "The Method for saving a user by sending mail")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<ForgetPasswordMailResponseDto> registerByMail(@RequestBody @Valid ForgetPasswordMailRequestDto dto) {
         return ResponseEntity.ok(authService.forgetPasswordMail(dto));
     }

@@ -10,36 +10,36 @@ spring:
     gateway:
       routes:
         - id: auth-service
-          uri: http://10.80.4.19:8090
+          uri: http://10.80.4.19:8090/api/v1/auth
           predicates:
-            - Path= /auth/**
+            - Path= auth/**
           filters:
             - name: CircuitBreaker
               args:
                 enabled: true
                 fallbackUri: forward:/fallback/authservice
         - id: user-service
-          uri: http://10.80.6.168:8091
+          uri: http://10.80.6.168:8091/api/v1/user
           predicates:
-            - Path= /user/**
+            - Path= user/**
           filters:
             - name: CircuitBreaker
               args:
                 enabled: true
                 fallbackUri: forward:/fallback/userservice
         - id: company-service
-          uri: http://10.80.7.101:8093
+          uri: http://10.80.7.101:8093/api/v1/company
           predicates:
-            - Path= /company/**
+            - Path= company/**
           filters:
             - name: CircuitBreaker
               args:
                 enabled: true
                 fallbackUri: forward:/fallback/companyservice
         - id: email-service
-          uri: http://10.80.11.72:8099
+          uri: http://10.80.11.72:8099/api/v1/email
           predicates:
-            - Path= /email/**
+            - Path= email/**
           filters:
             - name: CircuitBreaker
               args:

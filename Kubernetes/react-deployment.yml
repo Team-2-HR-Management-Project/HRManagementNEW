@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-reactweb
+  labels:
+    app: reactwebdeployment
+spec:
+  selector:
+    matchLabels:
+      app: react-web-service
+  template:
+    metadata:
+      labels:
+        app: react-web-service
+    spec:
+      containers:
+        - name: main
+          image: team2hr/hrmapp:v006
+          resources:
+            requests:
+              memory: 1024Mi
+              cpu: 100m
+            limits:
+              memory: 2048Mi
+              cpu: 200m
+          ports:
+            - containerPort: 80
+            - containerPort: 3000
