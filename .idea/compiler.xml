@@ -17,6 +17,7 @@
         <module name="HRManagement.config-server.main" />
         <module name="HRManagement.main" />
         <module name="HRManagement.email-service.main" />
+        <module name="HRManagement.expenses-service.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

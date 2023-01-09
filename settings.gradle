@@ -6,4 +6,5 @@ include 'api-gateway-service'
 include 'email-service'
 include 'company-service'
 include 'leave-service'
+include 'expenses-service'
 

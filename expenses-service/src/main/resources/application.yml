@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      uri: http://10.80.4.254:8888
+  config:
+    import: "configserver:"
+  application:
+    name: expense-service-application
+
+#spring:
+#  cloud:
+#    config:
+#      uri: http://10.80.4.254:8888
+#  config:
+#    import: "configserver:"
+#  application:
+#    name: leave-service-application
