@@ -17,12 +17,14 @@ import static com.team2.constants.ApiUrls.EMAIL;
 
 @RestController
 @RequestMapping(EMAIL)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EmailController {
     @Autowired
     private  EmailSenderService emailSenderService;
 
     // Sending a simple Email
     @PostMapping("/sendMail")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void sendMail( @RequestBody RegisterByMailResponseDto dto){
         try{
             emailSenderService.sendEmail(dto.getEmail(),"Your temporary password: ",dto.getTemppassword());
@@ -33,6 +35,7 @@ public class EmailController {
     }
 
     @PostMapping("/forgetPasswordMail")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void forgetPasswordMail(@RequestBody ForgetPasswordMailResponseDto dto) {
         try {
             emailSenderService.sendEmail(dto.getEmail(), "Your temporary password: ", dto.getTemppassword());
@@ -42,6 +45,7 @@ public class EmailController {
     }
 
     @PostMapping("/notifymail")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void notifymail(@RequestBody NotifyMailRequestDto dto) {
         try {
             emailSenderService.sendEmail(dto.getEmail(), dto.getSubject(), dto.getMessage());

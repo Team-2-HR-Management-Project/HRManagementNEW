@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: team2hr/auth:v001
+        image: team2hr/auth:v005
         resources:
           requests:
             memory: 1024Mi

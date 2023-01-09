@@ -23,22 +23,22 @@ public class AuthController {
     private final JwtTokenManager jwtTokenManager;
 
     @PostMapping(REGISTER)
-    @Operation(summary = "The Method for saving a user")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Operation(summary = "This method is for saving a user")
     public ResponseEntity<RegisterResponseDto> register(@RequestBody @Valid RegisterRequestDto dto) {
         return ResponseEntity.ok(authService.register(dto));
     }
 
     @PostMapping(REGISTERBYMAIL)
-    @Operation(summary = "The Method for saving a user by sending mail")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Operation(summary = "This method is for saving a user by sending mail")
     public ResponseEntity<RegisterByMailResponseDto> registerByMail(@RequestBody @Valid RegisterByMailRequestDto dto) {
         return ResponseEntity.ok(authService.registerByMail(dto));
     }
 
     @PostMapping(LOGIN)
-    @Operation(summary = "The Method for signing in")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Operation(summary = "This method is for signing in")
     public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto dto) {
         return ResponseEntity.ok(authService.login(dto).get());
     }
@@ -56,8 +56,8 @@ public class AuthController {
         return ResponseEntity.ok(authService.createPassword(dto));
     }
     @PostMapping(FORGETPASSWORDMAIL)
-    @Operation(summary = "The Method for saving a user by sending mail")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Operation(summary = "This method is for saving a user by sending mail")
     public ResponseEntity<ForgetPasswordMailResponseDto> registerByMail(@RequestBody @Valid ForgetPasswordMailRequestDto dto) {
         return ResponseEntity.ok(authService.forgetPasswordMail(dto));
     }

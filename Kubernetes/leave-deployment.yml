@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leave-deployment
+  labels:
+    team: team2
+spec:
+  selector:
+    matchLabels:
+      app: leave-service
+  template:
+    metadata:
+      labels:
+        app: leave-service
+    spec:
+      containers:
+        - name: leave
+          image: team2hr/leave:v001
+          resources:
+            requests:
+              memory: 1024Mi
+              cpu: 150m
+            limits:
+              memory: 2048Mi
+              cpu: 200m
+          ports:
+            - containerPort: 8094
+          env:
+            - name: secretkey
+              value: "AdminBilge"
+            - name: audience
+              value: "bilgeadam"
+            - name: issuer
+              value: "bilgeadam"

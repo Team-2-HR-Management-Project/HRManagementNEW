@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: config-server-container
-          image: team2hr/config:v001
+          image: team2hr/config:v002
           resources:
             requests:
               memory: "128Mi"
