@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -14,11 +13,7 @@
             <option value="$PROJECT_DIR$/company-service" />
             <option value="$PROJECT_DIR$/config-server" />
             <option value="$PROJECT_DIR$/email-service" />
-<<<<<<< Updated upstream
             <option value="$PROJECT_DIR$/expenses-service" />
-=======
-            <option value="$PROJECT_DIR$/expenses" />
->>>>>>> Stashed changes
             <option value="$PROJECT_DIR$/leave-service" />
             <option value="$PROJECT_DIR$/user-service" />
           </set>

@@ -6,9 +6,6 @@ include 'api-gateway-service'
 include 'email-service'
 include 'company-service'
 include 'leave-service'
-<<<<<<< Updated upstream
 include 'expenses-service'
-=======
-include 'expenses'
->>>>>>> Stashed changes
+
 

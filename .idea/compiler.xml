@@ -14,7 +14,6 @@
         <module name="HRManagement.api-gateway-service.main" />
         <module name="HRManagement.company-service.main" />
         <module name="HRManagement.auth-service.main" />
-        <module name="HRManagement.expenses.main" />
         <module name="HRManagement.config-server.main" />
         <module name="HRManagement.main" />
         <module name="HRManagement.email-service.main" />
