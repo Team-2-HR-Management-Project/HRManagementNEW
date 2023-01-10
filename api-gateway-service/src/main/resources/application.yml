@@ -16,6 +16,10 @@ spring:
             allowedMethods:
               - GET
               - POST
+<<<<<<< Updated upstream
+=======
+        add-to-simple-url-handler-mapping: true
+>>>>>>> Stashed changes
       routes:
         - id: auth-service
           uri: http://10.80.4.19:8090

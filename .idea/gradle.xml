@@ -14,7 +14,11 @@
             <option value="$PROJECT_DIR$/company-service" />
             <option value="$PROJECT_DIR$/config-server" />
             <option value="$PROJECT_DIR$/email-service" />
+<<<<<<< Updated upstream
             <option value="$PROJECT_DIR$/expenses-service" />
+=======
+            <option value="$PROJECT_DIR$/expenses" />
+>>>>>>> Stashed changes
             <option value="$PROJECT_DIR$/leave-service" />
             <option value="$PROJECT_DIR$/user-service" />
           </set>
